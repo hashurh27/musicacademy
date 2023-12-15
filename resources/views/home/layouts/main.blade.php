@@ -922,8 +922,16 @@
               </div>
 
               <div class="header-right__buttons d-flex items-center mr-30 xl:mr-20 lg:d-none">
-                <a href="login.html" class="button -underline text-purple-1">ورود</a>
-                <a href="signup.html" class="button h-50 px-30 -purple-3 -rounded text-purple-1 mr-15">ثبت نام</a>
+                @auth
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="button -underline text-purple-1">خروج</button>
+              </form>                @else
+                <a href="{{ route('login') }}" class="button -underline text-purple-1">ورود</a>
+                <a href="{{ route('register') }}" class="button h-50 px-30 -purple-3 -rounded text-purple-1 mr-15">ثبت نام</a>
+                @endauth
+
+                
               </div>
             </div>
           </div>
@@ -931,6 +939,8 @@
         </div>
       </div>
     </header>
+<!-- partials/navigation.blade.php -->
+
 
 
     <div class="content-wrapper  js-content-wrapper">
